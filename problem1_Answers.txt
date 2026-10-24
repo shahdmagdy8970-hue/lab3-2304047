@@ -1,0 +1,46 @@
+Q1.1
+----
+SQL:
+INSERT INTO EMPLOYEE (ssn, fname, lname, Dno) VALUES ('444444444','Sara','Nabil',NULL);
+INSERT INTO DEPARTMENT (Dnumber, Dname, mgr_ssn, mgr_start_date)
+VALUES (4, 'Finance', '444444444', '2024-01-01');
+DELETE FROM EMPLOYEE WHERE ssn = '444444444';
+
+Output:
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key
+constraint fails (`company`.`department`, CONSTRAINT `department_ibfk_1`
+FOREIGN KEY (`mgr_ssn`) REFERENCES `employee` (`ssn`))
+
+Explanation: the employee is referenced by department 4, so MySQL refuses
+the delete (referential integrity). We must delete/change the department first.
+
+Q1.2
+----
+SQL:
+INSERT INTO PROJECT (Pnumber, Pname, Plocation, Dno)
+VALUES (40, 'ProductZ', 'Cairo', 99);
+
+Output:
+ERROR 1452 (23000): Cannot add or update a child row: a foreign key
+constraint fails (`company`.`project`, CONSTRAINT `project_ibfk_1`
+FOREIGN KEY (`Dno`) REFERENCES `department` (`Dnumber`))
+
+Explanation: department 99 does not exist. We must insert the department
+first, then the project.
+
+Q1.3
+----
+If mgr_ssn and Dno are both NOT NULL, each table needs a row from the other
+one first, so a normal INSERT is impossible (chicken-and-egg).
+Solution: temporarily disable the FK check, insert both rows, enable it again.
+
+SQL:
+SET FOREIGN_KEY_CHECKS = 0;
+INSERT INTO EMPLOYEE (ssn, fname, lname, Dno) VALUES ('555555555','Test','User',5);
+INSERT INTO DEPARTMENT (Dnumber, Dname, mgr_ssn) VALUES (5,'Test Dept','555555555');
+SET FOREIGN_KEY_CHECKS = 1;
+
+Output: Query OK, 1 row affected (x3)
+
+Other solution: keep one of the two columns nullable, insert the first row
+with NULL, insert the other table's row, then UPDATE the first row.

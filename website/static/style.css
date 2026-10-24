@@ -1,0 +1,176 @@
+/* ===== Modern Library Theme ===== */
+
+:root {
+    --navy: #17243a;
+    --navy-light: #243650;
+    --gold: #c7a56b;
+    --cream: #f7f4ed;
+    --white: #ffffff;
+    --text: #293449;
+    --muted: #7c8492;
+}
+
+body {
+    background: linear-gradient(135deg, #f7f4ed, #eee9df);
+    color: var(--text);
+    min-height: 100vh;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* Main headings */
+h1, h2, h3, h4, h5 {
+    color: var(--navy);
+    font-weight: 700;
+}
+
+h1 {
+    letter-spacing: -0.5px;
+}
+
+/* Cards */
+.card {
+    background: var(--white);
+    border: 1px solid rgba(23, 36, 58, 0.07);
+    border-radius: 18px;
+    box-shadow: 0 8px 28px rgba(23, 36, 58, 0.08) !important;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(23, 36, 58, 0.12) !important;
+}
+
+/* Main buttons */
+.btn-primary {
+    background-color: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--navy-light);
+    border-color: var(--navy-light);
+    color: var(--white);
+}
+
+/* Secondary buttons */
+.btn-outline-primary {
+    color: var(--navy);
+    border-color: var(--gold);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--navy);
+    border-color: var(--navy);
+    color: var(--white);
+}
+
+/* Inputs */
+.form-control,
+.form-select {
+    border: 1px solid #d9d7d0;
+    border-radius: 10px;
+    padding: 10px 12px;
+    background-color: var(--white);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 0.2rem rgba(199, 165, 107, 0.2);
+}
+
+/* Links */
+a {
+    color: #94713b;
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--navy);
+}
+
+/* Tables */
+.table {
+    color: var(--text);
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: var(--navy);
+    color: var(--white);
+    border-color: var(--navy);
+    padding: 14px;
+    white-space: nowrap;
+}
+
+.table tbody td {
+    padding: 12px;
+    border-color: #eeeae2;
+}
+
+.table tbody tr:hover td {
+    background-color: #faf8f3;
+}
+
+/* Images */
+img {
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Lists */
+.list-group-item {
+    background-color: transparent;
+    border-color: #e7e2d8;
+    transition: background-color 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Forms and buttons */
+.form-label {
+    color: var(--navy);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select,
+.btn {
+    border-radius: 10px;
+}
+
+.btn {
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-success {
+    background-color: #47775d;
+    border-color: #47775d;
+}
+
+.btn-danger {
+    background-color: #a94442;
+    border-color: #a94442;
+}
+
+/* Input groups */
+.input-group > .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.input-group > .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Error messages */
+.alert-danger {
+    border-radius: 12px;
+}
